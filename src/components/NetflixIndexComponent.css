@@ -1,11 +1,11 @@
-.container-fluid{
+/* .container-fluid{
     background-image: url('netflix-background-image.webp');
     
     height: 50vmax;
     color: white;
     background-size: cover;
     background-position: center;
-}
+} */
 
 .box {
     background-color: rgba(0, 0, 0, 0.6);

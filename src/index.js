@@ -8,11 +8,13 @@ import { NetflixRegisterComponent } from './components/NetflixRegisterComponent'
 import NetflixIndexComponent from './components/NetflixIndexComponent';
 import reportWebVitals from './reportWebVitals';
 import DataBindingComponent from './components/DataBindingComponent';
+import ShoppingComponent from './components/ShoopingComponent';
+import EventBindingComponent from './components/EventBindingComponent';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <DataBindingComponent />
+    <EventBindingComponent />
   </React.StrictMode>
 );
 
