@@ -64,12 +64,12 @@ export default function ShoppingComponent(){
                             </div>
                         </div>
                     </nav>
-                    <main className="col-7 d-flex flex-wrap overflow-auto" style={{height : '550px'}}>
+                    <main className="col-8 d-flex flex-wrap overflow-auto" style={{height : '550px'}}>
                         {
                             Products.map(product=>
-                            <div key={product.id} className="card m-2 p-2 w-25">
+                            <div key={product.id} className="card m-6 p-3 w-25">
                                 <img src={product.image} alt="" className="card-img-top" height='150' />
-                                <div className="card-header" style={{height : '120px'}}>
+                                <div className="card-header" style={{height : '200px'}}>
                                     <p>{product.title}</p>
                                 </div>
                                 <div className="card-body">
@@ -92,7 +92,7 @@ export default function ShoppingComponent(){
                                 )
                         }
                     </main>
-                    <aside className="col-3">
+                    <aside className="col-2">
                         <button className="btn btn-danger w-100"><span className="bi bi-cart3">Item Added to cart</span></button>
                     </aside>
                 </section>
