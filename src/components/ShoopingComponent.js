@@ -16,8 +16,8 @@ export default function ShoppingComponent(){
         })
     }
 
-    function LoadProducts(){
-        fetch('https://fakestoreapi.com/products')
+    function LoadProducts(url){
+        fetch(url)
         .then(response=> response.json())
         .then(data=>{
             setProducts(data);
@@ -29,18 +29,33 @@ export default function ShoppingComponent(){
         LoadProducts();
     },[])
 
+    function handleCatrgoryChange(e){
+        if(e.target.value == 'All'){
+            LoadProducts(`https://fakestoreapi.com/products`);
+        }else {
+            LoadProducts(`https://fakestoreapi.com/products/category/${e.target.value}`);
+        }
+        
+
+    }
+
+    function handleAddToCart(e){
+        alert(e.target.id);
+
+    }
+
     return(
         <>
             <div className="container-fluid">
-                <header className="bg-danger text-white text-center p-2">
+                <header className="bg-danger text-white text-center m-2 p-2">
                     <h1> <span className="bi bi-cart"></span> Shopping Home</h1>
                 </header>
                 <section className="row">
-                    <nav className="col-3">
+                    <nav className="col-2">
                         <div>
                             <label htmlFor="">Select a category</label>
                             <div>
-                                <select className="form-select">
+                                <select onChange={handleCatrgoryChange} className="form-select">
                                     {
                                         categories.map(category=>
                                            <option key={category}>{category}</option> )
@@ -49,12 +64,12 @@ export default function ShoppingComponent(){
                             </div>
                         </div>
                     </nav>
-                    <main className="col-9 d-flex flex-wrap overflow-auto" style={{height : '550px'}}>
+                    <main className="col-7 d-flex flex-wrap overflow-auto" style={{height : '550px'}}>
                         {
                             Products.map(product=>
                             <div key={product.id} className="card m-2 p-2 w-25">
                                 <img src={product.image} alt="" className="card-img-top" height='150' />
-                                <div className="card-header">
+                                <div className="card-header" style={{height : '120px'}}>
                                     <p>{product.title}</p>
                                 </div>
                                 <div className="card-body">
@@ -68,12 +83,18 @@ export default function ShoppingComponent(){
                                                 <span>[{product.rating.count}]</span>
                                             </span>
                                         </dd>
+                                        <div className="card-footer">
+                                            <button id={product.id} onClick={handleAddToCart} className="btn btn-danger text-white w-100" > <span className="bi bi-cart4"></span>Add to cart</button>
+                                        </div>
                                     </dl>
                                 </div>
                             </div>
                                 )
                         }
                     </main>
+                    <aside className="col-3">
+                        <button className="btn btn-danger w-100"><span className="bi bi-cart3">Item Added to cart</span></button>
+                    </aside>
                 </section>
             </div>
         </>
