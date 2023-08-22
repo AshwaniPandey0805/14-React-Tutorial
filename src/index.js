@@ -10,11 +10,12 @@ import reportWebVitals from './reportWebVitals';
 import DataBindingComponent from './components/DataBindingComponent';
 import ShoppingComponent from './components/ShoopingComponent';
 import EventBindingComponent from './components/EventBindingComponent';
+import TwoWayBinding from './components/TwoWayBinding';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <EventBindingComponent />
+    <TwoWayBinding />
   </React.StrictMode>
 );
 
