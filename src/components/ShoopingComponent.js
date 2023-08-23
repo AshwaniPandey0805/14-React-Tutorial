@@ -6,6 +6,12 @@ export default function ShoppingComponent(){
 
     const [categories, setCategories] = useState([]);
     const [Products, setProducts] = useState([]);
+    const [cartItems, setCartItems] = useState([]); 
+    const [itemsCount, setItemsCount] =  useState([0]);
+
+    function GetCartItemsCount(){
+        setItemsCount(cartItems.length);
+    }
     
     function LoadCategories(){
         fetch('https://fakestoreapi.com/products/categories')
@@ -27,7 +33,7 @@ export default function ShoppingComponent(){
     useEffect(()=>{
         LoadCategories();
         LoadProducts();
-    },[])
+    },[cartItems.length])
 
     function handleCatrgoryChange(e){
         if(e.target.value == 'All'){
@@ -40,7 +46,14 @@ export default function ShoppingComponent(){
     }
 
     function handleAddToCart(e){
-        alert(e.target.id);
+        alert("Item Added to cart");
+        fetch(`https://fakestoreapi.com/products/${e.target.id}`)
+        .then(response=> response.json())
+        .then(data=>{
+
+            cartItems.push(data);
+            GetCartItemsCount();
+        })
 
     }
 
@@ -64,7 +77,7 @@ export default function ShoppingComponent(){
                             </div>
                         </div>
                     </nav>
-                    <main className="col-8 d-flex flex-wrap overflow-auto" style={{height : '550px'}}>
+                    <main className="col-7 d-flex flex-wrap overflow-auto" style={{height : '550px'}}>
                         {
                             Products.map(product=>
                             <div key={product.id} className="card m-6 p-3 w-25">
@@ -92,8 +105,33 @@ export default function ShoppingComponent(){
                                 )
                         }
                     </main>
-                    <aside className="col-2">
-                        <button className="btn btn-danger w-100"><span className="bi bi-cart3">Item Added to cart</span></button>
+                    <aside className="col-3">
+                        <button className="btn btn-danger w-100"><span className="bi bi-cart3">[{itemsCount}]Item Added to cart</span></button>
+                        <table className="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Price</th>
+                                    <th>Preview</th>
+                                    <th>Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {
+                                    cartItems.map(items=>
+                                        <tr key={items.id}>
+                                            <td>{items.title}</td>
+                                            <td>{items.price}</td>
+                                            <td>
+                                                <img src={items.image} width="50" height="50" />
+                                            </td>
+                                            <td><button className="btn btn-danger">
+                                                <span className="bi bi-trash"></span></button></td>
+                                        </tr>
+                                        )
+                                }
+                            </tbody>
+                        </table>
                     </aside>
                 </section>
             </div>
