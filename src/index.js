@@ -11,11 +11,12 @@ import DataBindingComponent from './components/DataBindingComponent';
 import ShoppingComponent from './components/ShoopingComponent';
 import EventBindingComponent from './components/EventBindingComponent';
 import TwoWayBinding from './components/TwoWayBinding';
+import ShoppingClassComponentDemo from './components/ShoppingClassComponentDemo';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <ShoppingComponent />
+    <ShoppingClassComponentDemo />
   </React.StrictMode>
 );
 
