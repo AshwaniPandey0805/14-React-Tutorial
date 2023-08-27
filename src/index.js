@@ -14,11 +14,12 @@ import TwoWayBinding from './components/TwoWayBinding';
 import ShoppingClassComponentDemo from './components/ShoppingClassComponentDemo';
 import FormComponent from './components/FormComponent';
 import FormikDemo from './components/FormikDemo';
+import FormikValidation from './components/FormikValidation';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <FormikDemo />
+    <FormikValidation />
   </React.StrictMode>
 );
 
