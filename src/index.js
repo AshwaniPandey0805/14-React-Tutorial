@@ -12,11 +12,13 @@ import ShoppingComponent from './components/ShoopingComponent';
 import EventBindingComponent from './components/EventBindingComponent';
 import TwoWayBinding from './components/TwoWayBinding';
 import ShoppingClassComponentDemo from './components/ShoppingClassComponentDemo';
+import FormComponent from './components/FormComponent';
+import FormikDemo from './components/FormikDemo';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <ShoppingClassComponentDemo />
+    <FormikDemo />
   </React.StrictMode>
 );
 

@@ -61,7 +61,7 @@ export default class ShoppingClassComponentDemo extends React.Component{
                         </select>
                     </nav>
                     <main className="col-10">
-                        <div className="d-flex flex-wrap">
+                        <div className="d-flex flex-wrap w">
                             {
                                 this.state.products.map(product=>
                                     <CardComponent key={product.id} product={product} />
